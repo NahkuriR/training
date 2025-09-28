@@ -11,18 +11,11 @@ process sayHello {
         val greeting
 
     output:
-        path 'output.txt'
+        path "${greeting}-output.txt"
 
     script:
     """
-    echo '$greeting' > output.txt
+    echo '$greeting' > '$greeting-output.txt'
     """
 }
 
-params.greeting = 'Xin Chao'
-
-workflow {
-
-    // emit a greeting
-    sayHello(params.greeting)
-}
